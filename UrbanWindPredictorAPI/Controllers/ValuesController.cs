@@ -20,6 +20,7 @@ namespace UrbanWindPredictorAPI.Controllers
         public string Get(int id)
         {
             return "value";
+            //test email update
         }
 
         // POST api/values
