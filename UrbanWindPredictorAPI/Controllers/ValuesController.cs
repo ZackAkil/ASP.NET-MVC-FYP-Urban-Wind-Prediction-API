@@ -7,13 +7,21 @@ using System.Web.Http;
 
 namespace UrbanWindPredictorAPI.Controllers
 {
+    public class TestObj
+    {
+        public int id = 1;
+        public string words = "yo yo wasup";
+        public string[] vals = { "value1", "value2" };
+
+    }
    // [Authorize]
     public class ValuesController : ApiController
     {
         // GET api/values
-        public IEnumerable<string> Get()
+        public TestObj Get()
         {
-            return new string[] { "value1", "value2" };
+            
+            return new TestObj();
         }
 
         // GET api/values/5
