@@ -52,6 +52,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -213,7 +214,40 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApiKey.cs">
+      <DependentUpon>urban_wind_prediction_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bia.cs">
+      <DependentUpon>urban_wind_prediction_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Feature.cs">
+      <DependentUpon>urban_wind_prediction_db.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ScoutData.cs">
+      <DependentUpon>urban_wind_prediction_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StationData.cs">
+      <DependentUpon>urban_wind_prediction_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\urban_wind_prediction_db.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>urban_wind_prediction_db.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\urban_wind_prediction_db.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>urban_wind_prediction_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\urban_wind_prediction_db.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>urban_wind_prediction_db.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Zone.cs">
+      <DependentUpon>urban_wind_prediction_db.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -226,6 +260,16 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\urban_wind_prediction_db.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>urban_wind_prediction_db.edmx</DependentUpon>
+      <LastGenOutput>urban_wind_prediction_db.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\urban_wind_prediction_db.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>urban_wind_prediction_db.edmx</DependentUpon>
+      <LastGenOutput>urban_wind_prediction_db.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -247,6 +291,13 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <EntityDeploy Include="Models\urban_wind_prediction_db.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>urban_wind_prediction_db.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\urban_wind_prediction_db.edmx.diagram">
+      <DependentUpon>urban_wind_prediction_db.edmx</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\fyp.zackakil.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -285,6 +336,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
