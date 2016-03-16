@@ -13,10 +13,10 @@ namespace UrbanWindPredictorAPI.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class urban_wind_prediction_dbEntities : DbContext
+    public partial class urban_wind_prediction_db_entities : DbContext
     {
-        public urban_wind_prediction_dbEntities()
-            : base("name=urban_wind_prediction_dbEntities")
+        public urban_wind_prediction_db_entities()
+            : base("name=urban_wind_prediction_db_entities")
         {
         }
     
@@ -25,11 +25,11 @@ namespace UrbanWindPredictorAPI.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ApiKey> ApiKeys { get; set; }
-        public virtual DbSet<Bia> Bias { get; set; }
-        public virtual DbSet<Feature> Features { get; set; }
-        public virtual DbSet<ScoutData> ScoutDatas { get; set; }
-        public virtual DbSet<StationData> StationDatas { get; set; }
-        public virtual DbSet<Zone> Zones { get; set; }
+        public virtual DbSet<ApiKey> ApiKey { get; set; }
+        public virtual DbSet<Bias> Bias { get; set; }
+        public virtual DbSet<Feature> Feature { get; set; }
+        public virtual DbSet<ScoutData> ScoutData { get; set; }
+        public virtual DbSet<StationData> StationData { get; set; }
+        public virtual DbSet<Zone> Zone { get; set; }
     }
 }

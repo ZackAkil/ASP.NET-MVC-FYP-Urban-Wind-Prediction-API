@@ -17,10 +17,10 @@ namespace UrbanWindPredictorAPI.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Zone()
         {
-            this.Bias = new HashSet<Bia>();
-            this.Features = new HashSet<Feature>();
-            this.Features1 = new HashSet<Feature>();
-            this.StationDatas = new HashSet<StationData>();
+            this.Bias = new HashSet<Bias>();
+            this.Feature = new HashSet<Feature>();
+            this.Feature1 = new HashSet<Feature>();
+            this.StationData = new HashSet<StationData>();
         }
     
         public int zoneID { get; set; }
@@ -28,12 +28,12 @@ namespace UrbanWindPredictorAPI.Models
         public bool isPredicted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bia> Bias { get; set; }
+        public virtual ICollection<Bias> Bias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Feature> Features { get; set; }
+        public virtual ICollection<Feature> Feature { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Feature> Features1 { get; set; }
+        public virtual ICollection<Feature> Feature1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StationData> StationDatas { get; set; }
+        public virtual ICollection<StationData> StationData { get; set; }
     }
 }

@@ -175,10 +175,10 @@
           </Key>
           <Property Name="apiKeyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="apiKeyValue" Type="String" MaxLength="7" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="ScoutDatas" Relationship="Self.FK_ScoutData_ApiKey" FromRole="ApiKey" ToRole="ScoutData" />
-          <NavigationProperty Name="StationDatas" Relationship="Self.FK_StationData_ApiKey" FromRole="ApiKey" ToRole="StationData" />
+          <NavigationProperty Name="ScoutData" Relationship="Self.FK_ScoutData_ApiKey" FromRole="ApiKey" ToRole="ScoutData" />
+          <NavigationProperty Name="StationData" Relationship="Self.FK_StationData_ApiKey" FromRole="ApiKey" ToRole="StationData" />
         </EntityType>
-        <EntityType Name="Bia">
+        <EntityType Name="Bias">
           <Key>
             <PropertyRef Name="biasID" />
           </Key>
@@ -232,9 +232,9 @@
           <Property Name="locationArea" Type="Geometry" Nullable="false" />
           <Property Name="isPredicted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Bias" Relationship="Self.FK_Bias_Zone" FromRole="Zone" ToRole="Bias" />
-          <NavigationProperty Name="Features" Relationship="Self.FK_Feature_PredictedZoneID" FromRole="Zone" ToRole="Feature" />
-          <NavigationProperty Name="Features1" Relationship="Self.FK_Feature_SourceZoneID" FromRole="Zone" ToRole="Feature" />
-          <NavigationProperty Name="StationDatas" Relationship="Self.FK_StationData_Zone" FromRole="Zone" ToRole="StationData" />
+          <NavigationProperty Name="Feature" Relationship="Self.FK_Feature_PredictedZoneID" FromRole="Zone" ToRole="Feature" />
+          <NavigationProperty Name="Feature1" Relationship="Self.FK_Feature_SourceZoneID" FromRole="Zone" ToRole="Feature" />
+          <NavigationProperty Name="StationData" Relationship="Self.FK_StationData_Zone" FromRole="Zone" ToRole="StationData" />
         </EntityType>
         <Association Name="FK_ScoutData_ApiKey">
           <End Role="ApiKey" Type="Self.ApiKey" Multiplicity="1" />
@@ -262,7 +262,7 @@
         </Association>
         <Association Name="FK_Bias_Zone">
           <End Role="Zone" Type="Self.Zone" Multiplicity="1" />
-          <End Role="Bias" Type="Self.Bia" Multiplicity="*" />
+          <End Role="Bias" Type="Self.Bias" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Zone">
               <PropertyRef Name="zoneID" />
@@ -308,36 +308,36 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="urban_wind_prediction_dbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ApiKeys" EntityType="Self.ApiKey" />
-          <EntitySet Name="Bias" EntityType="Self.Bia" />
-          <EntitySet Name="Features" EntityType="Self.Feature" />
-          <EntitySet Name="ScoutDatas" EntityType="Self.ScoutData" />
-          <EntitySet Name="StationDatas" EntityType="Self.StationData" />
-          <EntitySet Name="Zones" EntityType="Self.Zone" />
+        <EntityContainer Name="urban_wind_prediction_db_entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ApiKey" EntityType="Self.ApiKey" />
+          <EntitySet Name="Bias" EntityType="Self.Bias" />
+          <EntitySet Name="Feature" EntityType="Self.Feature" />
+          <EntitySet Name="ScoutData" EntityType="Self.ScoutData" />
+          <EntitySet Name="StationData" EntityType="Self.StationData" />
+          <EntitySet Name="Zone" EntityType="Self.Zone" />
           <AssociationSet Name="FK_ScoutData_ApiKey" Association="Self.FK_ScoutData_ApiKey">
-            <End Role="ApiKey" EntitySet="ApiKeys" />
-            <End Role="ScoutData" EntitySet="ScoutDatas" />
+            <End Role="ApiKey" EntitySet="ApiKey" />
+            <End Role="ScoutData" EntitySet="ScoutData" />
           </AssociationSet>
           <AssociationSet Name="FK_StationData_ApiKey" Association="Self.FK_StationData_ApiKey">
-            <End Role="ApiKey" EntitySet="ApiKeys" />
-            <End Role="StationData" EntitySet="StationDatas" />
+            <End Role="ApiKey" EntitySet="ApiKey" />
+            <End Role="StationData" EntitySet="StationData" />
           </AssociationSet>
           <AssociationSet Name="FK_Bias_Zone" Association="Self.FK_Bias_Zone">
-            <End Role="Zone" EntitySet="Zones" />
+            <End Role="Zone" EntitySet="Zone" />
             <End Role="Bias" EntitySet="Bias" />
           </AssociationSet>
           <AssociationSet Name="FK_Feature_PredictedZoneID" Association="Self.FK_Feature_PredictedZoneID">
-            <End Role="Zone" EntitySet="Zones" />
-            <End Role="Feature" EntitySet="Features" />
+            <End Role="Zone" EntitySet="Zone" />
+            <End Role="Feature" EntitySet="Feature" />
           </AssociationSet>
           <AssociationSet Name="FK_Feature_SourceZoneID" Association="Self.FK_Feature_SourceZoneID">
-            <End Role="Zone" EntitySet="Zones" />
-            <End Role="Feature" EntitySet="Features" />
+            <End Role="Zone" EntitySet="Zone" />
+            <End Role="Feature" EntitySet="Feature" />
           </AssociationSet>
           <AssociationSet Name="FK_StationData_Zone" Association="Self.FK_StationData_Zone">
-            <End Role="Zone" EntitySet="Zones" />
-            <End Role="StationData" EntitySet="StationDatas" />
+            <End Role="Zone" EntitySet="Zone" />
+            <End Role="StationData" EntitySet="StationData" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -345,8 +345,8 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="urban_wind_prediction_db_modelStoreContainer" CdmEntityContainer="urban_wind_prediction_dbEntities">
-          <EntitySetMapping Name="ApiKeys">
+        <EntityContainerMapping StorageEntityContainer="urban_wind_prediction_db_modelStoreContainer" CdmEntityContainer="urban_wind_prediction_db_entities">
+          <EntitySetMapping Name="ApiKey">
             <EntityTypeMapping TypeName="urban_wind_prediction_db_model.ApiKey">
               <MappingFragment StoreEntitySet="ApiKey">
                 <ScalarProperty Name="apiKeyID" ColumnName="apiKeyID" />
@@ -355,7 +355,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Bias">
-            <EntityTypeMapping TypeName="urban_wind_prediction_db_model.Bia">
+            <EntityTypeMapping TypeName="urban_wind_prediction_db_model.Bias">
               <MappingFragment StoreEntitySet="Bias">
                 <ScalarProperty Name="biasID" ColumnName="biasID" />
                 <ScalarProperty Name="zoneID" ColumnName="zoneID" />
@@ -363,7 +363,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Features">
+          <EntitySetMapping Name="Feature">
             <EntityTypeMapping TypeName="urban_wind_prediction_db_model.Feature">
               <MappingFragment StoreEntitySet="Feature">
                 <ScalarProperty Name="featureID" ColumnName="featureID" />
@@ -374,7 +374,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ScoutDatas">
+          <EntitySetMapping Name="ScoutData">
             <EntityTypeMapping TypeName="urban_wind_prediction_db_model.ScoutData">
               <MappingFragment StoreEntitySet="ScoutData">
                 <ScalarProperty Name="scoutDataID" ColumnName="scoutDataID" />
@@ -386,7 +386,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="StationDatas">
+          <EntitySetMapping Name="StationData">
             <EntityTypeMapping TypeName="urban_wind_prediction_db_model.StationData">
               <MappingFragment StoreEntitySet="StationData">
                 <ScalarProperty Name="stationDataID" ColumnName="stationDataID" />
@@ -398,7 +398,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Zones">
+          <EntitySetMapping Name="Zone">
             <EntityTypeMapping TypeName="urban_wind_prediction_db_model.Zone">
               <MappingFragment StoreEntitySet="Zone">
                 <ScalarProperty Name="zoneID" ColumnName="zoneID" />
@@ -421,7 +421,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

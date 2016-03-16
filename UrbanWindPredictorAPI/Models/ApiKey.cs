@@ -17,16 +17,16 @@ namespace UrbanWindPredictorAPI.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ApiKey()
         {
-            this.ScoutDatas = new HashSet<ScoutData>();
-            this.StationDatas = new HashSet<StationData>();
+            this.ScoutData = new HashSet<ScoutData>();
+            this.StationData = new HashSet<StationData>();
         }
     
         public int apiKeyID { get; set; }
         public string apiKeyValue { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ScoutData> ScoutDatas { get; set; }
+        public virtual ICollection<ScoutData> ScoutData { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StationData> StationDatas { get; set; }
+        public virtual ICollection<StationData> StationData { get; set; }
     }
 }

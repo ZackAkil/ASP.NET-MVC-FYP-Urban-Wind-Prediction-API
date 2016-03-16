@@ -12,7 +12,7 @@ namespace UrbanWindPredictorAPI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Bia
+    public partial class Bias
     {
         public int biasID { get; set; }
         public int zoneID { get; set; }
