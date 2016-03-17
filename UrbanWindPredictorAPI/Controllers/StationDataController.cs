@@ -74,8 +74,8 @@ namespace UrbanWindPredictorAPI.Controllers
         }
 
         // POST: api/StationData
-        [ResponseType(typeof(StationData))]
-        public IHttpActionResult PostStationData(StationData stationData)
+        [ResponseType(typeof(StationDataCollector))]
+        public IHttpActionResult PostStationData(StationDataCollector stationDataCollector)
         {
             
 
@@ -83,11 +83,16 @@ namespace UrbanWindPredictorAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
-            stationData.dataTimeCollected = DateTime.Now;
+            stationDataCollector.dateTimeCollected = DateTime.Now;
+
+            int apiKeyId = db.ApiKey.Where(a => a.apiKeyValue == stationDataCollector.apiKey).First().apiKeyID;
+
+            StationData stationData = stationDataCollector.convertToDb(apiKeyId);
 
             db.StationData.Add(stationData);
+            db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = stationData.stationDataID }, stationData);
+            return CreatedAtRoute("DefaultApi", new { id = stationData.stationDataID }, stationDataCollector);
         }
 
         // DELETE: api/StationData/5
