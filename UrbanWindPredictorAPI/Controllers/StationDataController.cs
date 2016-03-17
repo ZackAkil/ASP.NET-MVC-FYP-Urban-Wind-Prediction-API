@@ -6,10 +6,12 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using UrbanWindPredictorAPI.Models;
+
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 
 namespace UrbanWindPredictorAPI.Controllers
 {
@@ -25,9 +27,9 @@ namespace UrbanWindPredictorAPI.Controllers
 
         // GET: api/StationData/5
         [ResponseType(typeof(StationData))]
-        public async Task<IHttpActionResult> GetStationData(int id)
+        public IHttpActionResult GetStationData(int id)
         {
-            StationData stationData = await db.StationData.FindAsync(id);
+            StationData stationData = db.StationData.Find(id);
             if (stationData == null)
             {
                 return NotFound();
@@ -36,71 +38,73 @@ namespace UrbanWindPredictorAPI.Controllers
             return Ok(stationData);
         }
 
-        //// PUT: api/StationData/5
-        //[ResponseType(typeof(void))]
-        //public async Task<IHttpActionResult> PutStationData(int id, StationData stationData)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+        // PUT: api/StationData/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutStationData(int id, StationData stationData)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-        //    if (id != stationData.stationDataID)
-        //    {
-        //        return BadRequest();
-        //    }
+            if (id != stationData.stationDataID)
+            {
+                return BadRequest();
+            }
 
-        //    db.Entry(stationData).State = EntityState.Modified;
+            db.Entry(stationData).State = EntityState.Modified;
 
-        //    try
-        //    {
-        //        await db.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!StationDataExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!StationDataExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
-        //    return StatusCode(HttpStatusCode.NoContent);
-        //}
+            return StatusCode(HttpStatusCode.NoContent);
+        }
 
-        //// POST: api/StationData
-        //[ResponseType(typeof(StationData))]
-        //public async Task<IHttpActionResult> PostStationData(StationData stationData)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+        // POST: api/StationData
+        [ResponseType(typeof(StationData))]
+        public IHttpActionResult PostStationData(StationData stationData)
+        {
+            
 
-        //    db.StationData.Add(stationData);
-        //    await db.SaveChangesAsync();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            stationData.dataTimeCollected = DateTime.Now;
 
-        //    return CreatedAtRoute("DefaultApi", new { id = stationData.stationDataID }, stationData);
-        //}
+            db.StationData.Add(stationData);
 
-        //// DELETE: api/StationData/5
-        //[ResponseType(typeof(StationData))]
-        //public async Task<IHttpActionResult> DeleteStationData(int id)
-        //{
-        //    StationData stationData = await db.StationData.FindAsync(id);
-        //    if (stationData == null)
-        //    {
-        //        return NotFound();
-        //    }
+            return CreatedAtRoute("DefaultApi", new { id = stationData.stationDataID }, stationData);
+        }
 
-        //    db.StationData.Remove(stationData);
-        //    await db.SaveChangesAsync();
+        // DELETE: api/StationData/5
+        [ResponseType(typeof(StationData))]
+        public IHttpActionResult DeleteStationData(int id)
+        {
+            StationData stationData = db.StationData.Find(id);
+            if (stationData == null)
+            {
+                return NotFound();
+            }
 
-        //    return Ok(stationData);
-        //}
+            db.StationData.Remove(stationData);
+            db.SaveChanges();
+
+            return Ok(stationData);
+        }
 
         protected override void Dispose(bool disposing)
         {

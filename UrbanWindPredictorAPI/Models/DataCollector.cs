@@ -23,5 +23,17 @@ namespace UrbanWindPredictorAPI.Models
     public class StationDataCollector : DataCollector
     {
         public int zoneId { get; set; }
+
+        public StationData convertToDb(int confirmedApiKeyId)
+        {
+            StationData convert = new StationData();
+            convert.dataTimeCollected = this.dateTimeCollected;
+            convert.windDirection = System.Convert.ToDecimal(this.windDirection);
+            convert.windSpeed = System.Convert.ToDecimal(this.windSpeed);
+            convert.zoneID = this.zoneId;
+            convert.apiKeyID = confirmedApiKeyId;
+
+            return convert;
+        }
     }
 }
