@@ -22,7 +22,7 @@ namespace UrbanWindPredictorAPI.Models
             this.powerValue = DbFeature.powValue;
         }
 
-        public static double getPrediction(FeatureBase[] features, double )
+        public static double getPrediction(FeatureBase[] features)
         {
 
             double result = 0;
