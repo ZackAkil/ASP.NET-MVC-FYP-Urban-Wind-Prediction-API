@@ -13,7 +13,18 @@ using MathNet.Numerics;
 
 namespace UrbanWindPredictorAPI.Models
 {
-    public class Learning
+    public static class Learning
     {
+       private static Vector<Double> predictFunction(Matrix<Double> featureValues, Vector<Double> theta)
+        {
+            return sigmoidFunction(featureValues * theta);
+        }
+
+        private static Vector<Double> sigmoidFunction(Vector<Double> values)
+        {
+            var result = (1 / (values.Multiply(-1).PointwiseExp() + 1));
+            Console.WriteLine(result);
+            return result;
+        }
     }
 }
