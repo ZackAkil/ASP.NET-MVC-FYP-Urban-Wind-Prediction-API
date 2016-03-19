@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="UrbanWindPredictorAPI.Models.DataCollector">
+    <Position X="14.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAASQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DataCollector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UrbanWindPredictorAPI.Models.ScoutDataCollector">
+    <Position X="13" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAYAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DataCollector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UrbanWindPredictorAPI.Models.StationDataCollector">
+    <Position X="15.75" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DataCollector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

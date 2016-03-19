@@ -224,6 +224,7 @@
     <Compile Include="Models\Feature.cs">
       <DependentUpon>urban_wind_prediction_db.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FeatureBase.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ScoutData.cs">
       <DependentUpon>urban_wind_prediction_db.tt</DependentUpon>
@@ -299,6 +300,7 @@
     <Content Include="Models\urban_wind_prediction_db.edmx.diagram">
       <DependentUpon>urban_wind_prediction_db.edmx</DependentUpon>
     </Content>
+    <Content Include="Models\ClassDiagram1.cd" />
     <None Include="Properties\PublishProfiles\fyp.zackakil.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
