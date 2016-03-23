@@ -20,7 +20,6 @@ namespace UrbanWindPredictorAPI.Controllers
         // GET: api/Zones
         public IQueryable<Zone> GetZone()
         {
-
             return db.Zone;
         }
 

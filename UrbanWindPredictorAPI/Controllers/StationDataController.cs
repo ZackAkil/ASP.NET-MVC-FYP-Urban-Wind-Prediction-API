@@ -19,11 +19,11 @@ namespace UrbanWindPredictorAPI.Controllers
     {
         private urban_wind_prediction_db_entities db = new urban_wind_prediction_db_entities();
 
-        // GET: api/StationData
-        public IQueryable<StationData> GetStationData()
-        {
-            return db.StationData;
-        }
+        //// GET: api/StationData
+        //public IQueryable<StationData> GetStationData()
+        //{
+        //    return db.StationData;
+        //}
 
         // GET: api/StationData/5
         [ResponseType(typeof(StationData))]
@@ -38,40 +38,40 @@ namespace UrbanWindPredictorAPI.Controllers
             return Ok(stationData);
         }
 
-        // PUT: api/StationData/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutStationData(int id, StationData stationData)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// PUT: api/StationData/5
+        //[ResponseType(typeof(void))]
+        //public IHttpActionResult PutStationData(int id, StationData stationData)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            if (id != stationData.stationDataID)
-            {
-                return BadRequest();
-            }
+        //    if (id != stationData.stationDataID)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            db.Entry(stationData).State = EntityState.Modified;
+        //    db.Entry(stationData).State = EntityState.Modified;
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!StationDataExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!StationDataExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
 
         // POST: api/StationData
         [ResponseType(typeof(StationDataCollector))]
@@ -95,21 +95,21 @@ namespace UrbanWindPredictorAPI.Controllers
             return CreatedAtRoute("DefaultApi", new { id = stationData.stationDataID }, stationDataCollector);
         }
 
-        // DELETE: api/StationData/5
-        [ResponseType(typeof(StationData))]
-        public IHttpActionResult DeleteStationData(int id)
-        {
-            StationData stationData = db.StationData.Find(id);
-            if (stationData == null)
-            {
-                return NotFound();
-            }
+        //// DELETE: api/StationData/5
+        //[ResponseType(typeof(StationData))]
+        //public IHttpActionResult DeleteStationData(int id)
+        //{
+        //    StationData stationData = db.StationData.Find(id);
+        //    if (stationData == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.StationData.Remove(stationData);
-            db.SaveChanges();
+        //    db.StationData.Remove(stationData);
+        //    db.SaveChanges();
 
-            return Ok(stationData);
-        }
+        //    return Ok(stationData);
+        //}
 
         protected override void Dispose(bool disposing)
         {
