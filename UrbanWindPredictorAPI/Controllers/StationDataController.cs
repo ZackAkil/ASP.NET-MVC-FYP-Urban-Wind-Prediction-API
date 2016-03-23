@@ -87,7 +87,7 @@ namespace UrbanWindPredictorAPI.Controllers
 
             int apiKeyId = db.ApiKey.Where(a => a.apiKeyValue == stationDataCollector.apiKey).First().apiKeyID;
 
-            StationData stationData = stationDataCollector.convertToDb(apiKeyId);
+            StationData stationData = stationDataCollector.ConvertToDb(apiKeyId);
 
             db.StationData.Add(stationData);
             db.SaveChanges();

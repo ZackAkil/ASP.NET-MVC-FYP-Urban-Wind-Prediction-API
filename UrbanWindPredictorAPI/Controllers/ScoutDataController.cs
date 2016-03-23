@@ -83,7 +83,7 @@ namespace UrbanWindPredictorAPI.Controllers
 
             int apiKeyId = db.ApiKey.Where(a => a.apiKeyValue == scoutDataCollector.apiKey).First().apiKeyID;
 
-            ScoutData scoutData = scoutDataCollector.convertToDb(apiKeyId);
+            ScoutData scoutData = scoutDataCollector.ConvertToDb(apiKeyId);
 
             db.ScoutData.Add(scoutData);
             db.SaveChanges();

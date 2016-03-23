@@ -21,7 +21,7 @@ namespace UrbanWindPredictorAPI.Models
         public double longitude { get; set; }
         public double latitude { get; set; }
 
-        public ScoutData convertToDb(int confirmedApiKeyId)
+        public ScoutData ConvertToDb(int confirmedApiKeyId)
         {
             ScoutData convert = new ScoutData();
             convert.apiKeyID = confirmedApiKeyId;
@@ -40,7 +40,7 @@ namespace UrbanWindPredictorAPI.Models
     {
         public int zoneId { get; set; }
 
-        public StationData convertToDb(int confirmedApiKeyId)
+        public StationData ConvertToDb(int confirmedApiKeyId)
         {
             StationData convert = new StationData();
             convert.apiKeyID = confirmedApiKeyId;
