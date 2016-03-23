@@ -22,10 +22,17 @@ namespace UrbanWindPredictorAPI.Models
             this.powerValue = DbFeature.powValue;
         }
 
+
+        /// <summary>
+        /// Get predicted wind values based off learned theta values.
+        /// </summary>
+        /// <param name="features">Values of features used for intial learning.</param>
+        /// <returns>Predicted value.</returns>
         public static double getPrediction(FeatureBase[] features)
         {
 
             double result = 0;
+
 
             foreach (var feature in features)
             {
