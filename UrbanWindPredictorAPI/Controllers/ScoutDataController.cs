@@ -79,8 +79,6 @@ namespace UrbanWindPredictorAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            scoutDataCollector.dateTimeCollected = DateTime.Now;
-
             int apiKeyId = db.ApiKey.Where(a => a.apiKeyValue == scoutDataCollector.apiKey).First().apiKeyID;
 
             ScoutData scoutData = scoutDataCollector.ConvertToDb(apiKeyId);

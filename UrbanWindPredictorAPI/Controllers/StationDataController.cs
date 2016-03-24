@@ -78,12 +78,10 @@ namespace UrbanWindPredictorAPI.Controllers
         public IHttpActionResult PostStationData(StationDataCollector stationDataCollector)
         {
             
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            stationDataCollector.dateTimeCollected = DateTime.Now;
 
             int apiKeyId = db.ApiKey.Where(a => a.apiKeyValue == stationDataCollector.apiKey).First().apiKeyID;
 
